@@ -41,6 +41,14 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+/*global css*/
+body {
+    font: 14px/20px Georgia, 'Times New Roman', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
 
 /* basic loading style */
 .bg {
@@ -72,6 +80,10 @@ table {
     -webkit-box-align: center;
     -moz-box-align: center;
     -ms-flex-align: center;
+    -webkit-transition: all 1.2s;
+    -moz-transition: all 1.2s;
+    -ms-transition: all 1.2s;
+    transition: all 1.2s;
 }
 
 .loading-icon {
@@ -85,8 +97,8 @@ table {
 }
 
 .loading-title {
-    font: 14px/20px 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
     color: #333;
+    font-style: italic;
 }
 
 @font-face {
