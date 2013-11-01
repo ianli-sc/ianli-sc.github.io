@@ -1,5 +1,3 @@
-# Hash jump design
-
 ## hashchange & popstate
 * `hash change`触发条件：url的hash值被改变(没有到有，有到更多，更多到更少，有到没有)
   * `location.href += '#hash'`

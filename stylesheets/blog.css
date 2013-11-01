@@ -1,0 +1,64 @@
+.blog-pre {
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0 10px 10px #D3D3D3;
+    -moz-box-shadow: 0 10px 10px #D3D3D3;
+    box-shadow: 0 10px 10px #D3D3D3;
+    cursor: pointer;
+}
+
+.blog-pre .pre-container {
+    margin: 20px 20px 10px 20px;
+    height: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pre-container header {
+    padding: 20px 0;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: bolder;
+    color: #303030;
+    border-bottom: 1px solid #ddd;
+}
+
+.pre-container nav {
+    display: inline-block;
+    line-height: 1.5;
+    border: 1px solid #ddd;
+    border-top: none;
+    margin-bottom: 20px;
+    padding: 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+    -webkit-box-shadow: 1px 0 1px #E7E7E7;
+    -moz-box-shadow: 1px 0 1px #E7E7E7;
+    box-shadow: 1px 0 1px #E7E7E7;
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(left,  rgba(236,236,236,1) 0%, rgba(243,243,243,1) 50%, rgba(239,239,239,1) 51%, rgba(236,236,236,1) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(236,236,236,1)), color-stop(50%,rgba(243,243,243,1)), color-stop(51%,rgba(239,239,239,1)), color-stop(100%,rgba(236,236,236,1)));
+    background: -webkit-linear-gradient(left,  rgba(236,236,236,1) 0%,rgba(243,243,243,1) 50%,rgba(239,239,239,1) 51%,rgba(236,236,236,1) 100%);
+    background: -o-linear-gradient(left,  rgba(236,236,236,1) 0%,rgba(243,243,243,1) 50%,rgba(239,239,239,1) 51%,rgba(236,236,236,1) 100%);
+    background: -ms-linear-gradient(left,  rgba(236,236,236,1) 0%,rgba(243,243,243,1) 50%,rgba(239,239,239,1) 51%,rgba(236,236,236,1) 100%);
+    background: linear-gradient(to right,  rgba(236,236,236,1) 0%,rgba(243,243,243,1) 50%,rgba(239,239,239,1) 51%,rgba(236,236,236,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 );
+}
+
+.pre-container header .art-time {
+    font-weight:lighter;
+    font-size: 12px;
+    line-height: 40px;
+    color: #999;
+    float: right;
+}
+
+.blog-pre .pre-show {
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-top: 2px solid #ccc;
+    color: #303030;
+    font-size: 18px;
+    font-weight: bold;
+}
