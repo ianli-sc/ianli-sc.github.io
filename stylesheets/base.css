@@ -44,10 +44,24 @@ table {
 /*global css*/
 body {
     font: 14px/20px Georgia, 'Times New Roman', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
+    text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
 }
 
 a {
     text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+hr {
+    height: 1px;
+    line-height: 1px;
+    margin-top: 1em;
+    padding-bottom: 1em;
+    border: none;
+    background: url('../images/hr.png') 50% 0 no-repeat;
 }
 
 /* basic loading style */
@@ -99,6 +113,12 @@ a {
 .loading-title {
     color: #333;
     font-style: italic;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+    font-family: 'Chivo';
 }
 
 @font-face {

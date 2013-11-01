@@ -32,12 +32,20 @@ define(['jquery'], function($) {
     function addCount() {
         count += 1;
         //4 images loaded, hide mask
-        if(count >= 4) {
+        if(count === 4) {
             $('.loading').css({
                 opacity : 0
             });
             var timer = setTimeout(function() {
-                $('body').remove('.loading');
+                clearTimeout(timer);
+                $('.loading').remove();
+                var container = $('.bg-container');
+                container.css({
+                    display : 'block'
+                });
+                container.animate({
+                    opacity : 1
+                }, 10);
             }, 1200);
         }
     }
