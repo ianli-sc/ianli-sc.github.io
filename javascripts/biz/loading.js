@@ -3,7 +3,7 @@ define(['jquery', 'biz/nav'], function($, nav) {
     var count = 0;
     var loading = {
         init : function() {
-            //pre-load images
+            //preload images
             var srcs = [
                 'images/octocat-icon.png',
                 'images/lily/h-1.jpg',
@@ -19,7 +19,7 @@ define(['jquery', 'biz/nav'], function($, nav) {
         }
     };
     /**
-     * pre-load image
+     * preload image
      */
     function preloadImg(src, callback) {
         var img = new Image();

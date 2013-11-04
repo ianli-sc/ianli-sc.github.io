@@ -22,11 +22,20 @@ define([
         }
         //TODO This is not cool!
         //load css
-        var link = document.createElement("link");
-        link.type = 'text/css';
-        link.rel = 'stylesheet';
-        link.href = 'javascripts/applet/popbox/base.css';
-        $("head").prepend(link);
+        var cssloaded = false;
+        $('head link').each(function(index, item){
+            if(item.href.match(/javascripts\/applet\/popbox\/base.css/)){
+                cssloaded = true;
+                return false;
+            }
+        });
+        if(!cssloaded) {
+            var link = document.createElement("link");
+            link.type = 'text/css';
+            link.rel = 'stylesheet';
+            link.href = 'javascripts/applet/popbox/base.css';
+            $("head").prepend(link);
+        }
 
         this.config = $.extend(popbox.config, config);
         this.animations = $.extend(popbox.animations, animations);

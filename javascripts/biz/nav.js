@@ -35,11 +35,11 @@ define([
             });
             var demoleaf = $('.leaf-demo');
             demoleaf.on('click', function() {
-                location.href = location.origin + '/demo.html';
+                location.href = location.origin + '/demo';
             });
             var appletleaf = $('.leaf-applet');
             appletleaf.on('click', function() {
-                location.href = location.origin + '/applet.html';
+                location.href = location.origin + '/applet';
             });
             //TODO Build bubble to show all children
         }
