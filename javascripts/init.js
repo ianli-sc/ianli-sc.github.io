@@ -5,7 +5,8 @@
 requirejs.config({
     "baseUrl": "javascripts/lib",
     "paths": {
-      "app": "../app"
+      "biz": "../biz",
+      "applet": "../applet"
     },
     "shim": {
         "bootstrap": ["jquery"]
@@ -13,4 +14,4 @@ requirejs.config({
 });
 
 // Load the main app module to start the app
-requirejs(["app"]);
+requirejs(["biz/manager"]);

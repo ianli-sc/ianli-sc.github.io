@@ -1,5 +1,5 @@
 'use strict';
-define(['jquery', 'app/nav'], function($, nav) {
+define(['jquery', 'biz/nav'], function($, nav) {
     var count = 0;
     var loading = {
         init : function() {

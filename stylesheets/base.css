@@ -410,6 +410,11 @@ hr {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e3e3e3', endColorstr='#e3e3e3',GradientType=1 ); /* IE6-9 */
 }
 
+.bg * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline: none;
+}
+
 .loading {
     position: absolute;
     width: 100%;

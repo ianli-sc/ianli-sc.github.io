@@ -1,8 +1,8 @@
 'use strict';
 define([
     'jquery',
-    'app/loading',
-    'app/blog',
+    'biz/loading',
+    'biz/blog',
     'bootstrap'
 ], function($, loading, blog) {
     loading.init();

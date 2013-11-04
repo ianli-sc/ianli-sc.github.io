@@ -222,3 +222,14 @@
         transform: translate3d(40px,-120px,0);
     }
 }
+
+/*search bar*/
+.pop-search .ui-dialog-content {
+    padding-right: 0;
+}
+
+.pop-search .ui-dialog-content input {
+    width: 100%;
+    height: 34px;
+    border-radius: 5px;
+}
