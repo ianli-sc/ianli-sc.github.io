@@ -377,7 +377,6 @@ footer a:hover {
 /*global css*/
 body {
     font: 14px/20px Georgia, 'Times New Roman', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
-    text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
 }
 
 a {

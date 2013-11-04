@@ -1,6 +1,5 @@
 .bg-container {
     display: none;
-    width: 640px;
     margin: 0 auto;
     opacity : 0;
     -webkit-transition: all 1.2s;
@@ -11,6 +10,8 @@
 
 .container-header {
     padding: 35px 0 25px 0;
+    width: 640px;
+    margin: 0 auto;
 }
 
 .container-header h1 {
@@ -32,8 +33,9 @@
 }
 
 .container-git {
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
     height: 50px;
+    width: 640px;
 }
 
 .git-btn {
@@ -87,11 +89,12 @@
 
 .bg .bg-footer {
     background: url('../images/hr.png') 50% 0 no-repeat;
-    margin-top: 40px;
     padding-top: 20px;
     padding-bottom: 30px;
     font-size: 13px;
     color: #aaa;
+    margin: 40px auto 0 auto;
+    width: 640px;
 }
 
 .bg-footer a {
@@ -99,7 +102,12 @@
 }
 
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
-    .bg-container {
-        width: 480px;
+    .bg-container,
+    .bg-container .container-git,
+    .bg-container .container-header,
+    .bg-container .blog-pre,
+    .bg-container .bg-footer,
+    .bg-container .place-holder {
+        width: 100%;
     }
 }

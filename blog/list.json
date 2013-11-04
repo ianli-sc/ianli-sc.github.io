@@ -2,16 +2,19 @@
     {
         "title" : "view_port深入研究报告",
         "time" : "Jun 12th 2013. am 10:36",
-        "type" : "mobile html"
+        "type" : "mobile html",
+        "identifiy" : "id_vp"
     },
     {
         "title" : "hash jump design",
         "time" : "Aug 14th 2013. am 10:42",
-        "type" : "mobile js"
+        "type" : "mobile js",
+        "identifiy" : "id_hj"
     },
     {
         "title" : "post get",
         "time" : "Oct 10th 2013. pm 11:14",
-        "type" : "common http"
+        "type" : "common http",
+        "identifiy" : "id_pg"
     }
 ]

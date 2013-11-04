@@ -10,6 +10,23 @@ define(['jquery', 'showdown'], function($) {
                     showList(data);
                 }
             });
+        },
+        bindEvent : function(el) {
+            el.bind('click', function() {
+                el.toggleClass('blog-expand');
+                //记录收起状态的scroll
+                if(el.hasClass('blog-expand')) {
+                    el.attr('data-scroll', window.scrollY);
+                } else {
+                    window.scrollTo(0, el.attr('data-scroll'));
+                }
+                var showEl = $('.pre-show', el);
+                if(showEl.text() === '显示全部') {
+                    showEl.text('收起内容');
+                } else {
+                    showEl.text('显示全部');
+                }
+            });
         }
     };
 
@@ -17,13 +34,16 @@ define(['jquery', 'showdown'], function($) {
         var converter = new Showdown.converter();
         $.each(data, function(index, item) {
             var url = 'blog/' + item.title + '.md';
+            var id = item.identifiy;
             $.ajax({
                 url: url,
                 type : 'get',
                 dataType: 'text',
                 success: function(data) {
                     var text = converter.makeHtml(data);
-                    $('.container-blog').prepend('<section class="blog-pre">\
+                    var blogContainer = $('.container-blog');
+                    blogContainer.children('.place-holder').remove();
+                    blogContainer.append('<section class="blog-pre" id="' + id + '">\
                         <div class="pre-container">\
                             <header>' +
                                 item.title +
@@ -34,9 +54,11 @@ define(['jquery', 'showdown'], function($) {
                         '</div>\
                         <div class="pre-show">显示全部</div>\
                     </section>');
+                    blog.bindEvent($('#' + id));
                 }
             });
         });
     }
+
     return blog;
 });
