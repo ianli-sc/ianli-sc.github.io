@@ -1,5 +1,5 @@
 'use strict';
-define(['jquery'], function($) {
+define(['jquery', 'app/nav'], function($, nav) {
     var count = 0;
     var loading = {
         init : function() {
@@ -38,7 +38,10 @@ define(['jquery'], function($) {
             });
             var timer = setTimeout(function() {
                 clearTimeout(timer);
+                //remove loading mask
                 $('.loading').remove();
+                //show navigator
+                nav.init();
                 var container = $('.bg-container');
                 container.css({
                     display : 'block'
