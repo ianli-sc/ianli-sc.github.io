@@ -1,12 +1,3 @@
-/*loading*/
-.place-holder {
-    font: italic 20px/2 Baskerville,Palatino,"Book Antiqua",serif;
-    width: 680px;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-}
-
 /*collapse*/
 .blog-pre {
     margin: 0 auto 20px auto;

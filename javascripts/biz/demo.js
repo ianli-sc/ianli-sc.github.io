@@ -5,8 +5,26 @@ define([
 ], function($, gallery) {
     var demo = {
         init: function() {
-            gallery.init();
+            $.ajax({
+                url : '../demo/list.json',
+                datatype : 'json',
+                type : 'get',
+                success : function(data) {
+                    initGallery(data);
+                }
+            });
         }
     };
+    /**
+     * initialize gallery
+     */
+    function initGallery(data) {
+        var galleryNode = $('.bg-gallery');
+        //remove placeholder
+        galleryNode.empty();
+        //create and show
+        gallery(galleryNode, data).show();
+    }
+
     return demo;
 });
