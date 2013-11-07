@@ -6,12 +6,12 @@ define(['jquery', 'biz/nav'], function($, nav) {
             //preload images
             var srcs = [
                 'images/octocat-icon.png',
-                'images/lily/h-1.JPG',
-                'images/lily/w-1.JPG',
-                'images/lily/h-2.JPG',
-                'images/lily/w-2.JPG',
-                'images/lily/h-3.JPG',
-                'images/lily/w-3.JPG'
+                'http://ianli-sc.github.io/images/lily/h-1.JPG',
+                'http://ianli-sc.github.io/images/lily/w-1.JPG',
+                'http://ianli-sc.github.io/images/lily/h-2.JPG',
+                'http://ianli-sc.github.io/images/lily/w-2.JPG',
+                'http://ianli-sc.github.io/images/lily/h-3.JPG',
+                'http://ianli-sc.github.io/images/lily/w-3.JPG'
             ];
             $.each(srcs, function(index, item) {
                 preloadImg(item, addCount);
