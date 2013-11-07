@@ -1,11 +1,13 @@
-.bg-gallery {
-    width: 960px;
+.bg-gallery, gallery-container {
+    width: 1200px;
+    height: 100%;
     margin: 0 auto;
 }
 
 @media only screen and (max-width: 960px), only screen and (max-device-width: 960px) {
     .bg-gallery {
         width: 100%;
+        height: 100%;
         margin: 0 auto;
     }
 }
@@ -30,14 +32,94 @@
 
 .gallery-item {
     width: 240px;
-    height: 160px;
-    overflow: hidden;
     margin: 0 auto;
     display: inline-block;
     *display: inline;
     zoom: 1;
+    float: left;
+    position: relative;
+    margin-bottom: 16px;
+    -webkit-perspective: 240;
+    -moz-perspective: 240;
+    -ms-perspective: 240;
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -ms-transform-origin: center;
+    padding: 10px;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    -ms-perspective: 1000px;
+}
+
+.item-detail {
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: all .5s linear;
+    -moz-transform-style: preserve-3d;
+    -moz-transition: all .5s linear;
+    -ms-transform-style: preserve-3d;
+    -ms-transition: all .5s linear;
+    -webkit-box-shadow: 5px 5px 5px #aaa;
+    -moz-box-shadow: 5px 5px 5px #aaa;
+    box-shadow: 5px 5px 5px #aaa;
 }
 
 .gallery-item img {
-    width: 240px;
+    width: 220px;
+    vertical-align: top;
+}
+
+.gallery-item .item-content {
+    position: relative;
+    z-index: 2;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+}
+
+.gallery-item .item-title {
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-shadow: 1px 1px #000;
+}
+
+.gallery-item .item-describe {
+    width: 100%;
+    padding: 10px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    background: -moz-linear-gradient(-45deg,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0)));
+    background: -webkit-linear-gradient(-45deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+    background: -o-linear-gradient(-45deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+    background: -ms-linear-gradient(-45deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(135deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 );
+}
+
+item-describe h4 {
+    color: #FFF;
+    text-shadow: 1px 1px #333;
+}
+
+.flip-show {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -webkit-box-shadow: -5px 5px 5px #aaa;
+    -moz-box-shadow: -5px 5px 5px #aaa;
+    box-shadow: -5px 5px 5px #aaa;
 }

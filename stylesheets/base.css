@@ -47,7 +47,11 @@ table {
 }
 
 /* LAYOUT STYLES */
+html {
+    height: 100%;
+}
 body {
+  height: 100%;
   font-size: 1em;
   line-height: 1.5; 
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
@@ -464,19 +468,6 @@ hr {
     margin: 0 auto;
     display: block;
     text-align: center;
-}
-
-/*demo*/
-.demo-bg {
-    background: rgb(167,189,210);
-    background: -moz-linear-gradient(left,  rgba(167,189,210,1) 0%, rgba(216,225,232,1) 50%, rgba(167,189,210,1) 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(167,189,210,1)), color-stop(50%,rgba(216,225,232,1)), color-stop(100%,rgba(167,189,210,1)));
-    background: -webkit-linear-gradient(left,  rgba(167,189,210,1) 0%,rgba(216,225,232,1) 50%,rgba(167,189,210,1) 100%);
-    background: -o-linear-gradient(left,  rgba(167,189,210,1) 0%,rgba(216,225,232,1) 50%,rgba(167,189,210,1) 100%);
-    background: -ms-linear-gradient(left,  rgba(167,189,210,1) 0%,rgba(216,225,232,1) 50%,rgba(167,189,210,1) 100%);
-    background: linear-gradient(to right,  rgba(167,189,210,1) 0%,rgba(216,225,232,1) 50%,rgba(167,189,210,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7bdd2', endColorstr='#a7bdd2',GradientType=1 );
-    color: #333;
 }
 
 @font-face {

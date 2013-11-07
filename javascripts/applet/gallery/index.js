@@ -12,7 +12,7 @@ define(['jquery'], function() {
         if (!(this instanceof gallery)) {
             return new gallery(root, data);
         }
-        this.root = root;
+        this.root = root || 'body';
         this.data = data;
         this._init();
     };
@@ -41,12 +41,14 @@ define(['jquery'], function() {
                 </ul>';*/
             $.each(data, function(key, value) {
                 var html = '<section class="gallery-item">\
-                    <div class="item-content">\
-                        <img class="item-data" src="' + value.url + '">\
-                        <cite class="item-title">' + value.title + '</cite>\
-                    </div>\
-                    <div class="item-describe">\
-                        <h4>' + value.describe + '</h4>\
+                    <div class="item-detail">\
+                        <div class="item-content">\
+                            <img class="item-data" src="' + value.url + '">\
+                            <cite class="item-title">' + value.title + '</cite>\
+                        </div>\
+                        <div class="item-describe">\
+                            <h4>' + value.describe + '</h4>\
+                        </div>\
                     </div>\
                 </section>';
                 container += html;
@@ -55,6 +57,15 @@ define(['jquery'], function() {
             $(container).appendTo($(this.root));
         },
         show : function() {
+            this.bindEvent();
+        },
+        bindEvent : function() {
+            $('.gallery-item .item-detail').each(function(key, value) {
+                var target = $(value);
+                target.on('click', function() {
+                    target.toggleClass('flip-show');
+                });
+            });
         }
     };
 
