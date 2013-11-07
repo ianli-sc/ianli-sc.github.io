@@ -1,0 +1,43 @@
+.bg-gallery {
+    width: 960px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 960px), only screen and (max-device-width: 960px) {
+    .bg-gallery {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+/*.gallery-container .gallery-ctr {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 116px;
+    height: 44px;
+    background: url(../../../images/btn.png) no-repeat;
+}
+
+.gallery-ctr li {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    width: 54px;
+    height: 44px;
+    list-style: none;
+}*/
+
+.gallery-item {
+    width: 240px;
+    height: 160px;
+    overflow: hidden;
+    margin: 0 auto;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+.gallery-item img {
+    width: 240px;
+}
