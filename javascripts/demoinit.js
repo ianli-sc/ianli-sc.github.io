@@ -1,3 +1,4 @@
+'use strict';
 // Place third party dependencies in the lib folder
 //
 // Configure loading modules from the lib directory,
@@ -6,7 +7,8 @@ requirejs.config({
     "baseUrl": "../javascripts/lib",
     "paths": {
       "biz": "../biz",
-      "applet": "../applet"
+      "applet": "../applet",
+      "demo": "../demo"
     },
     "shim": {
         "bootstrap": ["jquery"]
