@@ -17,7 +17,7 @@ define([
         initDemo: function(data) {
             var galleryNode = $('.bg-gallery');
             if(galleryNode.length === 1) {
-                initGallery(data);
+                initGallery(galleryNode, data);
             }
             var nativeNode = $('.native-storage');
             if(nativeNode.length === 1) {
@@ -28,7 +28,7 @@ define([
     /**
      * initialize gallery
      */
-    function initGallery(data) {
+    function initGallery(galleryNode, data) {
         require([
             'applet/gallery/index'
         ], function(gallery) {

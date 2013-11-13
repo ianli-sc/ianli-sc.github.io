@@ -15,8 +15,8 @@ define(['jquery'], function($) {
             }
             //test of globalStorage
             if(window.globalStorage) {
-                window.globalStorage.setItem('skey', stringData);
-                $('#storage_global').val(window.globalStorage.getItem('skey'));
+                window.globalStorage['ianli-sc.github.io'].setItem('skey', stringData);
+                $('#storage_global').val(window.globalStorage['ianli-sc.github.io'].getItem('skey'));
             }
             //test of userData
             var userDataNode = $('#storage_userData')[0];

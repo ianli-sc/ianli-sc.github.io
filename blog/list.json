@@ -16,5 +16,11 @@
         "time" : "Oct 10th 2013. pm 11:14",
         "type" : "common http",
         "identifiy" : "id_pg"
+    },
+    {
+        "title" : "cross browser native storage",
+        "time" : "Nov 13th 2013. am 11:59",
+        "type" : "browser",
+        "identifiy" : "id_cbns"
     }
 ]
