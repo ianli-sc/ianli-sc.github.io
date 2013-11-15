@@ -38,14 +38,13 @@
     zoom: 1;
     float: left;
     position: relative;
-    margin-bottom: 16px;
     -webkit-perspective: 240;
     -moz-perspective: 240;
     -ms-perspective: 240;
     -webkit-transform-origin: center;
     -moz-transform-origin: center;
     -ms-transform-origin: center;
-    padding: 10px;
+    padding: 0 10px;
     -webkit-perspective: 1000px;
     -moz-perspective: 1000px;
     -ms-perspective: 1000px;
@@ -63,7 +62,8 @@
     box-shadow: 5px 5px 5px #aaa;
 }
 
-.gallery-item img {
+.gallery-item .item-data {
+    position: relative;
     width: 220px;
     vertical-align: top;
 }
@@ -125,4 +125,36 @@
     -webkit-box-shadow: -5px 5px 5px #aaa;
     -moz-box-shadow: -5px 5px 5px #aaa;
     box-shadow: -5px 5px 5px #aaa;
+}
+
+/*tool*/
+.item-tool {
+    font: normal 40px/46px 'mbIcon';
+    width: 100%;
+    margin: -10px 0 0 0;
+    font-weight: normal;
+    text-align: center;
+}
+
+.item-tool span {
+    cursor: pointer;
+}
+
+/*expanded item*/
+.item-data {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%
+}
+
+@font-face {
+    font-family: 'mbIcon';
+    src: url('mbIcon.eot');/*IE6,7,8,10,11*/
+    src: url('mbIcon.eot-iefix') format('embedded-opentype'),/*IE9*/
+         url('mbIcon.woff') format('woff'),/*FF3.6+*/
+         url('mbIcon.ttf') format('truetype'),/*FF3.5,webkit*/
+         url('mbIcon.svg') format('svg');/*webkit,opera*/
+    font-weight: normal;
+    font-style: normal;
 }

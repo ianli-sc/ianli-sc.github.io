@@ -50,6 +50,11 @@ define(['jquery'], function() {
                             <h4>' + value.describe + '</h4>\
                         </div>\
                     </div>\
+                    <p class="item-tool">\
+                        <span data-evt="expand" class="tool-expand">p</span>\
+                        <span data-evt="share" class="tool-share">5</span>\
+                        <span data-evt="save" class="tool-save">w</span>\
+                    </p>\
                 </section>';
                 container += html;
             });
@@ -60,12 +65,47 @@ define(['jquery'], function() {
             this.bindEvent();
         },
         bindEvent : function() {
+            var self = this;
             $('.gallery-item .item-detail').each(function(key, value) {
                 var target = $(value);
+                //flip effect
                 target.on('click', function() {
                     target.toggleClass('flip-show');
                 });
             });
+            //toolbar
+            $('.gallery-item .item-tool').each(function(key, value) {
+                $(value).on('click', function(e) {
+                    var evt = $(e.target).attr('data-evt');
+                    self[evt](e);
+                });
+            });
+        },
+        /**
+         * expand item
+         */
+        expand : function(e) {
+            var item = $(e.target).parents('.gallery-item').find('.item-data');
+            var scrollTop = window.scrollY;
+            window.scrollTo(0, 0);
+            var newItem = new Image();
+            newItem.src = item[0].src;
+            $(newItem).appendTo('body').addClass('item-data').on('click', function(e) {
+                newItem.remove();
+                window.scrollTo(0, scrollTop);
+            });
+        },
+        /**
+         * share item
+         */
+        share : function() {
+            //todo
+        },
+        /**
+         * save to local
+         */
+        save : function() {
+            
         }
     };
 
