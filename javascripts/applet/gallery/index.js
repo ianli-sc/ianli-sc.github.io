@@ -104,8 +104,9 @@ define(['jquery'], function() {
         /**
          * save to local
          */
-        save : function() {
-            
+        save : function(e) {
+            var item = $(e.target).parents('.gallery-item').find('.item-data');
+            window.location = item[0].src;
         }
     };
 
