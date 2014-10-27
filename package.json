@@ -1,11 +1,6 @@
 {
-    "name": "buy-order",
-    "host": "g.tbcdn.cn",
-    "version": "1.1.9",
-    "repository": {
-        "type": "git",
-        "url": "git@gitlab.alibaba-inc.com:tm/buy.git"
-    },
+    "name": "ianli-io",
+    "version": "1.0.0",
     "devDependencies": {
         "gulp": "^3.8.0",
         "gulp-concat": "^2.2.0",
