@@ -1,3 +1,125 @@
-.b {
-    font-size: 12em;
+* {
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+    outline: 0;
+}
+
+html {
+    height: 100%;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font: 400 14px/1.5 'Source Sans Pro', sans-serif, '\5b8b\4f53', arial;
+    -webkit-font-smoothing: subpixel-antialiased;
+    background-color: #fdfdfd;
+    color: #333 !important;
+    width: 100%;
+    min-height: 100%;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul, li, ol, dl, dt, dd, h1, h2, h3, h4 {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*tools*/
+.hide {
+    display: none !important;
+}
+
+.highLine() {
+    padding: .5em 0;
+}
+
+.rotateTransfrom(@deg:45deg) {
+    -webkit-transform: rotate(@deg);
+    -ms-transform: rotate(@deg);
+    transform: rotate(@deg);
+}
+
+.setHeight(@h:1em) {
+    height: @h;
+    line-height: @h;
+}
+
+.boxlayout {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+}
+
+.boxflex(@num: 1) {
+    -webkit-box-flex: @num;
+    -moz-box-flex: @num;
+    -webkit-flex: @num;
+    -ms-flex: @num;
+}
+
+.boxclamp(@num: 1) {
+    -webkit-line-clamp: @num;
+    -moz-line-clamp: @num;
+    -ms-line-clamp: @num;
+    overflow: hidden;
+    word-break: break-all;
+};
+
+.boxvertical() {
+    -webkit-box-orient: vertical;
+    -ms-flex-direction: column;
+}
+
+.boxpack(@direct: center) {
+    -webkit-box-pack: @direct;
+    -ms-flex-pack: @direct;
+}
+.boxVcenter() {
+    .boxvertical();
+    .boxpack();
+}
+
+.boxAlign(@direct: center) {
+    -webkit-box-align: @direct;
+    -ms-flex-align: @direct;
+}
+
+.boxShadowInset(@top,@left,@shadow,@size,@color) {
+    -webkit-box-shadow: inset @top @left @shadow @size @color;
+    -ms-box-shadow: inset @top @left @shadow @size @color;
+    -moz-box-shadow: inset @top @left @shadow @size @color;
+    box-shadow: inset @top @left @shadow @size @color;
+}
+
+.transitionDuration(@time: 500ms) {
+    -webkit-transition-duration: @time;
+    -ms-transition-duration: @time;
+    -moz-transition-duration: @time;
+    transition-duration: @time;
+}
+
+.inlineBlock() {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+.borderRadius(@size: .2em) {
+    -webkit-border-radius: @size;
+    -ms-border-radius: @size;
+    -moz-border-radius: @size;
+    border-radius: @size;
 }

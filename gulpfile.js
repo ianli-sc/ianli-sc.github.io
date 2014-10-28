@@ -61,7 +61,7 @@ gulp.task('watch', function() {
 
 //maybe need sequence one day...
 gulp.task('default', function(){
-    runSequence('css', 'clean', 'libs', 'js');
+    runSequence('clean', 'css', 'libs', 'js');
 });
 
 //bug!!! in html task
