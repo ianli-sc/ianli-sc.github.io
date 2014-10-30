@@ -1,3 +1,41 @@
 @import 'font.less';
 @import 'base.less';
 @import 'fp.less';
+@import 'life.less';
+
+//navigation
+.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1024;
+    display: block;
+    cursor: pointer;
+
+    ul {
+        position: relative;
+        top: 0;
+        left: 0;
+        .animation(navDown, 1s, 1, ease-in-out);
+    }
+    li {
+        .inlineBlock();
+    }
+    .active {
+        a {
+            border-bottom: 2px solid #1b1b1b;
+        }
+    }
+    a {
+        color: #1b1b1b;
+        display: block;
+        padding: 8px;
+        margin: 8px;
+        font-weight: 600;
+        .transitionDuration(200ms);
+    }
+    a:hover {
+        border-bottom: 2px solid #1b1b1b;
+    }
+}
