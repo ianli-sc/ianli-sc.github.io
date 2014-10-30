@@ -170,3 +170,44 @@ em, i {
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
 }
+
+/*animation*/
+.animation(@type:fadeIn, @duration:2s, @repeat:1, @timing: ease-in-out) {
+    -webkit-animation: @type @duration @repeat @timing;
+    -moz-animation: @type @duration @repeat @timing;
+    -ms-animation: @type @duration @repeat @timing;
+    animation: @type @duration @repeat @timing;
+}
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@-moz-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@-ms-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@-webkit-keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+@-moz-keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+@-ms-keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}

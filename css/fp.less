@@ -12,6 +12,12 @@
         cursor: pointer;
         text-align: center;
 
+        ul {
+            position: relative;
+            top: 0;
+            left: 0;
+            .animation(navDown, 1s, 1, ease-in-out);
+        }
         li {
             .inlineBlock();
         }
@@ -44,6 +50,7 @@
             }
         }
         .content {
+            .animation();
             position: absolute;
             top: 50%;
             left: 50%;
@@ -55,7 +62,7 @@
             font-size: 20px;
             font-weight: 300;
             .header {
-                font: 50px/1.7 'Open Sans', sans-serif, sans-serif, Arial;
+                font: 50px/1.7 normal 'Open Sans', sans-serif, sans-serif, Arial;
                 letter-spacing: -2px;
             }
             .loading {
@@ -131,6 +138,26 @@
             .fa-github:hover		{
                 background-color: #FAFAFA;
             }
+            .fa-envelope-o:hover {
+                background-color: #FFD42D;
+            }
         }
     }
+}
+
+@-webkit-keyframes navDown {
+    from {top: -25px;opacity: 0;}
+    to {top: 0;opacity: 1;}
+}
+@keyframes navDown {
+    from {top: -25px;opacity: 0;}
+    to {top: 0;opacity: 1;}
+}
+@-moz-keyframes navDown {
+    from {top: -25px;opacity: 0;}
+    to {top: 0;opacity: 1;}
+}
+@-ms-keyframes navDown {
+    from {top: -25px;opacity: 0;}
+    to {top: 0;opacity: 1;}
 }
