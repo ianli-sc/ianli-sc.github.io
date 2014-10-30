@@ -21,7 +21,6 @@
                 <li><a href="/blog.html">Blog</a></li>
                 <li><a href="/life.html">Life</a></li>
                 <li><a href="/resume.html">Resume</a></li>
-                <li><a href="/about.html">About</a></li>
             </ul>
         </nav>
         <article class="billboard">
@@ -37,6 +36,37 @@
                 </div>
             </section>
         </article>
+        <article class="about">
+            <ul>
+                <li class="profile">
+                    <div class="content">
+                        <h1>About Me</h1>
+                        <hr>
+                        <p>I have ten years experience as a web developer. familiar with Android development, also love using node.js <ins>&</ins> java to build web server. Lots of experience in the production of JavaScript, CSS and HTML for modern websites on almost every browsers include mobile, tablet and webView in native app. I have a reasonable grasp of using JavaScript, CSS, Java and some experience of design.</p>
+                        <h1>Personal Info</h1>
+                        <hr>
+                        <ul>
+                            <li><em>Name</em><span>Ian Li</span></li>
+                            <li><em>Birthday</em><span>Decememeber 06, 1986</span></li>
+                            <li><em>Email</em><span>ian.primary.li@gmail.com</span></li>
+                            <li><em>Address</em><span>HangZhou. China</span></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="skill">
+                    <div class="chart-container">
+                        <ul class="highcharts-container">
+                            <li><label>JavaScript</label><span data-time="2-2-2">6 years</span></li>
+                            <li><label>CSS</label><span data-time="2-2-2">6 years</span></li>
+                            <li><label>Java</label><span data-time="3-0.5-0.5">4 years</span></li>
+                            <li><label>Node</label><span data-time="0-1-2">3 years</span></li>
+                            <li><label>Android</label><span data-time="1.5-0-0.5">2 years</span></li>
+                            <li><label>ObjectC</label><span data-time="0.5-0-0">0.5 years</span></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </article>
         <article class="findme">
             <hr />
             <h1>Find me on...</h1>
@@ -47,6 +77,7 @@
                 <li><a href="https://github.com/ianli-sc/" class="icon fa-github"><span class="label">Github</span></a></li>
             </ul>
         </article>
+        <footer class="right">&copy; 2014 Ian Li. All Rights Reserved</footer>
         <script>
             (function() {
                 'use strict';
@@ -55,7 +86,8 @@
                     "paths" : {
                         "jquery" : "../aio/aio-lib",
                         "fp" : "./fp",
-                        "aio" : "../aio"
+                        "aio" : "../aio",
+                        "chart" : "../lib/chart"
                     }
                 });
 
