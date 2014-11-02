@@ -1,7 +1,8 @@
 define('fp/app', [
     'jquery',
+    'list',
     'chart/highcharts'
-], function($, highcharts) {
+], function($, List, Highcharts) {
     'use strict';
     //get chart data
     var skillContent = $('.chart-container');
@@ -56,4 +57,5 @@ define('fp/app', [
             data: skillData.collage
         }]
     });
+    List.init();
 });

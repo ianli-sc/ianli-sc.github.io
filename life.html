@@ -27,11 +27,11 @@
     <div class="content">
         <div class="blog">
             <article class="article">
-                <a href="./life/01.md">
+                <a href="./life/00.html">
                     <img src="./img/life/00.png" />
                 </a>
                 <div class="profile">
-                    <h3 class="title"><a href="./life/01.md">请叫我wet man人</a></h3>
+                    <h3 class="title"><a href="./life/00.html">请叫我wet man人</a></h3>
                     <div class="info">
                         <span class="icon fa-calendar">2011-12-16 19:03</span>
                         <span class="type icon fa-flag">打油诗</span>
@@ -98,13 +98,45 @@
                     </div>
                 </div>
             </article>
-        </div>
-        <div class="list">
+        </div><div class="list" id="Tree">
             <h3>Blog Archive</h3>
             <ul class="timeline">
-                <li></li>
+                <li>
+                    <h4><span class="open">&#x25bc;</span>2011</h4>
+                    <ul>
+                        <li><a href="./life/00.md">请叫我wet man人</a></li>
+                        <li><a href="./life/00.md">请叫我wet man人</a></li>
+                        <li><a href="./life/00.md">请叫我wet man人</a></li>
+                        <li><a href="./life/00.md">请叫我wet man人</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
+    <footer class="right">&copy; 2014 Ian Li. All Rights Reserved</footer>
+    <script>
+        (function() {
+            'use strict';
+            requirejs.config({
+                "baseUrl" : "js",
+                "paths" : {
+                    "jquery" : "../aio/aio-lib",
+                    "fp" : "./fp",
+                    "life" : "./life",
+                    "aio" : "../aio",
+                    "chart" : "../lib/chart",
+                    "tree" : "../lib/tree"
+                }
+            });
+
+            if (!/\b(localhost)\b/g.test(location.href)) {
+                requirejs(["aio/aio"], function () {
+                    requirejs(["life/app"]);
+                });
+            } else {
+                requirejs(["life/app"]);
+            }
+        })();
+    </script>
 </body>
 </html>

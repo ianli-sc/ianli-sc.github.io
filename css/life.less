@@ -5,6 +5,7 @@
 @imgWidth: 160px;
 @profileWidth: @blogWidth - @imgWidth - 40px;
 .life {
+    height: auto;
     .nav {
         position: relative;
         text-align: center;
@@ -28,6 +29,17 @@
     .list {
         width: @listWidth;
         margin: 0 20px;
+        top: 0;
+        ul {
+            margin-left: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        h4 {
+            cursor: pointer;
+        }
     }
     .blog {
         width: @blogWidth;
