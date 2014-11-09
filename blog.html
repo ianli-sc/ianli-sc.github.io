@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <title>Ian li - f2e life - 君子可欺以其方，难罔以非其道</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/icon.ico" />
+    <link href="img/icon.png" rel="apple-touch-icon-precomposed" />
+    <link rel="stylesheet" href="aio/aio.css" />
+    <script src="aio/aio-lib.js"></script>
+    <base target=_blank>
+</head>
+<body class=tec-blog>
+<nav class="nav">
+    <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li class="active"><a href="/blog.html">Blog</a></li>
+        <li><a href="/life.html">Life</a></li>
+        <li><a href="/resume.html">Resume</a></li>
+    </ul>
+</nav>
+<div class="content">
+    <div class="blog">
+        <article>
+            <h2>Performance Inspector</h2>
+            <div class="post-meta">By <a href="https://github.com/ianli-sc">Ianli</a> on November 4th, 2014
+                <span class="icon fa-flag">Chrome extension</span>
+            </div>
+            <div class="post-content">
+                <p>I was working on improvement of web performance implementation for <a href="http://www.tmall.com">Tmall</a> as a front end engineer include PC &amp; Mobile web.</p>
+                <p>Three steps as three major job contents</p>
+
+                <ol>
+                    <li>Calculate current performance</li>
+                    <li>Know how to change them</li>
+                    <li>Just do it</li>
+                </ol>
+
+                <p></p><p>Calculate is no difficult with JavaScript and Hybrid api of native app for webViews. <a href="http://caniuse.com/#search=performance">Modern browsers supported</a> API of <a href="http://www.w3.org/wiki/Web_Performance/Publications">Performance</a>. These JavaScript Api able to provide <a href="http://www.w3.org/TR/navigation-timing/">Loading Timing</a>, <a href="http://www.w3.org/TR/resource-timing/">Resource (resource timing)</a> and Chrome also supported <a href="https://docs.webplatform.org/wiki/apis/timing/properties/memory">Memory</a>. Try <code>window.performance</code>.
+                </p><blockquote>
+                    <p>Why Hybrid Api? Performance is totally different on distinct networks. GPRS, EDGE, 3G, DSL and Wifi should be deal with differently, sometimes also need Offline. What happened under these net work environment ? How to make user <strong>stay</strong> at our page and successfully get the information or do operation ? how to make it less terrible in <strong>poor</strong> connection ? are three important issues.
+                    </p></blockquote>
+                <p>In this article, I will talk about calculate the performance and introduce the Performance API, at last give you a <a href="https://chrome.google.com/webstore/detail/performance-inspector/bgomfgoppmhcminmdojjeejheppadagh">simple but powerful extension</a> in Chrome.</p>
+                <h3>timing <code>window.performance.timing</code> <a href="http://caniuse.com/#search=PERFORMANCE">can i use?</a></h3>
+                <blockquote>
+                    Use tab: network in develop tools to detect more information of page loading. But it’s mixture which include resource timing and loading timing.
+                </blockquote>
+
+                <p></p><p>Nine steps for loading a signal page:</p><p></p>
+
+                <ol>
+                    <li>‘redirect’ : leave current page to target url</li>
+                    <li>‘fetch app catch’ : fetch data from browser catch</li>
+                    <li>‘dns look up’ : look up the DNS - get IP</li>
+                    <li>‘tcp connect’ : create TCP connection</li>
+                    <li>‘request’ : send request to target server</li>
+                    <li>‘response’ : get data from server</li>
+                    <li>‘dom loaded’ : load dom from html</li>
+                    <li>‘dom complete’: cover html to dom tree</li>
+                    <li>‘onload’: unload event</li>
+                </ol>
+
+                <p></p><p>It’s easy to get Timestamp for these steps for data of <code>var timing = window.performance.timing</code>. They are:</p>
+
+                <ol>
+                    <li>from <code>timing.redirectStart</code> to <code>timing.redirectEnd</code></li>
+                    <li>form <code>timing.fetchStart</code> to <code>timing.domainLookupStart</code></li>
+                    <li>from <code>timing.domainLookupStart</code> to <code>timing.domainLookupEnd</code></li>
+                    <li>from <code>timing.connectStart</code> to <code>timing.connectEnd</code></li>
+                    <li>from <code>timing.requestStart</code> to <code>timing.responseStart</code></li>
+                    <li>from <code>timing.responseStart</code> to <code>timing.responseEnd</code></li>
+                    <li>from <code>timing.domLoading</code> to <code>timing.domContentLoadedEventEnd</code></li>
+                    <li>from <code>timing.domContentLoadedEventEnd</code> to <code>timing.domComplete</code></li>
+                    <li>from <code>timing.loadEventStart</code> to <code>timing.loadEventEnd</code></li>
+                </ol>
+                <blockquote>
+                    All timing start from <code>timing.fetchStart</code>, all these data maybe 0 (WTF), it’s easy to create a function for adjustment.
+
+                    <pre><code>if(!window || !window.performance) {
+                        return;
+                        }
+                        var timing = window.performance.timing;
+                        var startTime = timing.fetchStart;
+
+                        //Simple adjustment
+                        function adjustment(now) {
+                        if(now) {
+                        return now - startTime;
+                        } else {
+                        return now;
+                        }
+                        }
+                        timing.redirectStart = adjustment(timing.redirectStart);
+                    </code></pre>
+                </blockquote>
+                <p>So it’s necessary to build two chart : volume chart to show the time line, pie chart to show the percentage of each step.</p>
+
+                <h3 id="resourcetimingwindow.performance.getentriescaniuse">Resource timing <code>window.performance.getEntries()</code> <a href="http://caniuse.com/#search=resource">can i use?</a></h3>
+                <p>An array will be return with object of <code>PerformanceResourceTiming</code> provide attribute below</p>
+
+                <table>
+                    <colgroup>
+                        <col style="text-align:left;">
+                        <col style="text-align:left;">
+                        <col style="text-align:left;">
+                    </colgroup>
+
+                    <thead>
+                    <tr>
+                        <th style="text-align:left;">name</th>
+                        <th style="text-align:left;">example value</th>
+                        <th style="text-align:left;">type or unit</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td style="text-align:left;">connectEnd</td>
+                        <td style="text-align:left;">745.4060000018217</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">connectStart</td>
+                        <td style="text-align:left;">745.4060000018217</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">domainLookupEnd</td>
+                        <td style="text-align:left;">745.4060000018217</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">domainLookupStart</td>
+                        <td style="text-align:left;">745.4060000018217</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">duration</td>
+                        <td style="text-align:left;">38.949000008869916</td>
+                        <td style="text-align:left;">ms</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">entryType</td>
+                        <td style="text-align:left;">“resource”</td>
+                        <td style="text-align:left;">string</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">fetchStart</td>
+                        <td style="text-align:left;">745.4060000018217</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">initiatorType</td>
+                        <td style="text-align:left;">“script”</td>
+                        <td style="text-align:left;">enum</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">name</td>
+                        <td style="text-align:left;">“http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js”</td>
+                        <td style="text-align:left;">url</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">redirectEnd</td>
+                        <td style="text-align:left;">0</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">redirectStart</td>
+                        <td style="text-align:left;">0</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">requestStart</td>
+                        <td style="text-align:left;">753.1200000084937</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">responseEnd</td>
+                        <td style="text-align:left;">784.3550000106916 timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">responseStart</td>
+                        <td style="text-align:left;">759.3990000023041</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">secureConnectionStart</td>
+                        <td style="text-align:left;">0</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;">startTime</td>
+                        <td style="text-align:left;">745.4060000018217</td>
+                        <td style="text-align:left;">timestamp</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p> All the time stamp above started from <code>fetchStart</code></p>
+                <p>Data <code>initiatorType</code> include these types:</p>
+                <table>
+                    <tbody><tr>
+                        <th>name</th><th>description</th>
+                    </tr>
+                    <tr>
+                        <td>script</td><td>js and jsonp request</td>
+                    </tr>
+                    <tr>
+                        <td>link</td><td>css and shortcut icon</td>
+                    </tr>
+                    <tr>
+                        <td>internal</td><td>request from iframe and extensions</td>
+                    </tr>
+                    <tr>
+                        <td>xmlhttprequest</td><td>XHR request</td>
+                    </tr>
+                    <tr>
+                        <td>iframe</td><td>inner iframe</td>
+                    </tr>
+                    <tr>
+                        <td>css</td><td>stylesheet</td>
+                    </tr>
+                    <tr>
+                        <td>img</td><td>image</td>
+                    </tr>
+                    </tbody></table>
+
+                <p></p><p>Except the timing line provided in network tab, We also need 4 chart to describe <strong>percentage of each kind of resource in all resource count</strong>, percentage of each kind of resource in all <strong>resource duration</strong> and two chart for resources loaded <strong>before unload event</strong> - we need limit the number and duration.</p>
+
+                <h3 id="memorywindow.performance.memory-chromeonly">Memory <code>window.performance.memory</code> - chrome only</h3>
+
+                <p><code>var memory = window.performance.memory</code>
+                </p><p>The unit is byte (1024byte = 1K = 1/1024 M)</p><p></p>
+
+                <ol>
+                    <li><code>memory.jsHeapSizeLimit</code> : Max js heap size of memory for all JS object and V8 internal objects.</li>
+                    <li><code>memory.usedJSHeapSize</code> : Total amount of memory being used by JS objects including V8 internal objects</li>
+                    <li><code>memory.totalJSHeapSize</code> : Is current size of the JS heap including free space not occupied by any JS objects</li>
+                </ol>
+                <img src="http://ianli-sc.github.io/performanceInspector/performance.png" />
+                <h3 id="theextension"><a href="http://ianli-sc.github.io/performanceInspector/">The extension</a></h3>
+                <p>So I created an extension to enhance maybe separate the views of network in develop tools tab in Chrome. This extension provide 7 chars as describe above. Little help for developer who wanna know what happened in current page.</p>
+                <p>This extension supported reload and page navigation~ really difficult job..</p>
+                <blockquote>
+                    Communication between <code>background.js</code> to panel which created by <code>chrome.devtools.panels</code> is really difficult in Chrome extension, Only solution now is using <code>chrome.runtime.connect</code>.
+                </blockquote>
+                <p>Feel free to <a href="https://github.com/ianli-sc/performanceInspector/issues">leave a feedback or create issues</a></p>
+            </div>
+        </article>
+    </div><div class="list" id="Tree">
+    <h3>Blog Archive</h3>
+    <ul class="timeline">
+    </ul>
+</div>
+</div>
+<footer class="right">&copy; 2014 Ian Li. All Rights Reserved</footer>
+<script>
+    (function() {
+        'use strict';
+        requirejs.config({
+            "baseUrl" : "js",
+            "paths" : {
+                "jquery" : "../aio/aio-lib",
+                "fp" : "./fp",
+                "life" : "./life",
+                "aio" : "../aio",
+                "chart" : "../lib/chart",
+                "tree" : "../lib/tree",
+                "blog" : "./blog"
+            }
+        });
+
+        if (!/\b(localhost)\b/g.test(location.href)) {
+            requirejs(["aio/aio"], function () {
+                requirejs(["blog/app"]);
+            });
+        } else {
+            requirejs(["blog/app"]);
+        }
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+@mainWidth: 980px;
+@blogWidth: 760px;
+@listWidth: 170px;
+@aticleHeight: 226px;
+@imgWidth: 160px;
+@profileWidth: @blogWidth - @imgWidth - 40px;
+.tec-blog {
+    height: auto;
+    font-family: Arvo, arial, serif;;
+    .nav {
+        position: relative;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    .content {
+        width: @mainWidth;
+        margin: 20px auto;
+    }
+    .blog {
+        .inlineBlock();
+        vertical-align: top;
+        width: @blogWidth;
+        article {
+            background: url('../img/blog/left-dot.png') bottom left repeat-x;
+            margin-bottom: 60px;
+            padding: 0 40px 60px 0;
+        }
+        h2 {
+            color: #333;
+            font-size: 28px;
+            letter-spacing: 1px;
+            line-height: 42px;
+            font-weight: normal;
+            text-transform: uppercase;
+            font-family: 'Quicksand',sans-serif;
+        }
+        .post-meta {
+            color: #8C8C8C;
+            font-size: 14px;
+            font-family: DroidSerif;
+            margin: 15px 0 0 0;
+            padding: 0 0 30px 0;
+            background: url('../img/blog/left-dot.png') bottom left repeat-x;
+        }
+        .post-content {
+            font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            text-decoration: none;
+            margin-top: 35px;
+            p {
+                line-height: 2;
+                margin: 15px 0;
+            }
+            img {
+                width: 100%;
+                border: none;
+                padding-top: 20px;
+            }
+            ol, ul,li {
+                list-style-position: inside;
+            }
+            ol, ol li {
+                list-style: inside decimal;
+            }
+        }
+        .icon {
+            padding-left: 10px;
+            font-size: 10px;
+            color: #999;
+        }
+    }
+}

@@ -1,8 +1,7 @@
 define('fp/app', [
     'jquery',
-    'list',
     'chart/highcharts'
-], function($, List, Highcharts) {
+], function($, Highcharts) {
     'use strict';
     //get chart data
     var skillContent = $('.chart-container');
@@ -57,5 +56,15 @@ define('fp/app', [
             data: skillData.collage
         }]
     });
-    List.init();
+    //pre-load imgs
+    var imgUrls = [
+        'http://ianli-sc.github.io/img/life/main.png',
+        'http://ianli-sc.github.io/img/life/00.png',
+        'http://ianli-sc.github.io/img/life/01.png',
+        'http://ianli-sc.github.io/img/life/02.png',
+        'http://ianli-sc.github.io/img/life/03.png'
+    ];
+    $.each(imgUrls, function(index, value) {
+        new Image().src = value;
+    });
 });

@@ -3,6 +3,7 @@
 @import 'base.less';
 @import 'fp.less';
 @import 'life.less';
+@import 'blog.less';
 
 //navigation
 .nav {
@@ -57,4 +58,27 @@ body .error-container {
 .right {
     display: block;
     text-align: center;
+}
+
+//list nav
+.list {
+    .inlineBlock();
+    vertical-align: top;
+    width: @listWidth;
+    margin: 0 20px;
+    top: 0;
+    ul {
+        margin-left: 10px;
+        .item {
+            list-style: inside disc;
+        }
+    }
+    a {
+        text-decoration: none;
+        color: #8c8c8c;
+        word-break: break-all;
+    }
+    h4 {
+        cursor: pointer;
+    }
 }
