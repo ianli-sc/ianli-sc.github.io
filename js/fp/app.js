@@ -33,6 +33,7 @@ define('fp/app', [
         },
         yAxis: {
             min: 0,
+            max: 6,
             title: {
                 text: 'Years of use'
             }

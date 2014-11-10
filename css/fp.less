@@ -191,3 +191,51 @@
     from {top: -25px;opacity: 0;}
     to {top: 0;opacity: 1;}
 }
+
+//For Mobile
+//Pad
+@media only screen and (max-width: 1024px) {
+    .fp {
+        .about {
+            > ul {
+                min-height: 36em;
+            }
+        }
+
+    }
+}
+
+//Phone
+@media only screen and (max-width: 680px) {
+    .fp {
+        .billboard {
+            height: 34em;
+            .default {
+                .bg {
+                    background-size: 40%;
+                }
+                .content {
+                    width: auto;
+                    height: 14em;
+                    margin: 0;
+                    padding: 2em;
+                    top: 5em;
+                    left: 0;
+                    font-size: 14px;
+                    background-size: 80%;
+                }
+            }
+        }
+        .profile, .skill {
+            display: block;
+            width: 100%;
+            .content {
+                background-size: 20%;
+                p, ul {
+                    border: none;
+                }
+            }
+        }
+
+    }
+}
