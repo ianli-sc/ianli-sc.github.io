@@ -8,6 +8,7 @@ define('life/app', [
         '<li>',
             '<h4><span class="open">&#x25bc;</span>2014</h4>',
             '<ul>',
+                '<li class="item"><a href="/life/05.html">念去去</a></li>',
                 '<li class="item"><a href="/life/04.html">前世今生</a></li>',
             '</ul>',
         '</li>',

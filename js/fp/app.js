@@ -62,6 +62,8 @@ define('fp/app', [
         'http://ianli-sc.github.io/img/life/00.png',
         'http://ianli-sc.github.io/img/life/01.png',
         'http://ianli-sc.github.io/img/life/02.png',
+        'http://ianli-sc.github.io/img/life/03.png',
+        'http://ianli-sc.github.io/img/life/03.png',
         'http://ianli-sc.github.io/img/life/03.png'
     ];
     $.each(imgUrls, function(index, value) {

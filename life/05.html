@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <title>Ian li - f2e life - 君子可欺以其方，难罔以非其道</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/icon.ico" />
+    <link href="../img/icon.png" rel="apple-touch-icon-precomposed" />
+    <link rel="stylesheet" href="../aio/aio.css" />
+    <script src="../aio/aio-lib.js"></script>
+    <base target=_blank>
+</head>
+<body class="life life-content">
+<nav class="nav">
+    <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li class="active"><a href="/life.html">Life</a></li>
+        <li><a href="/resume.html">Resume</a></li>
+    </ul>
+</nav>
+<div class="content">
+    <div class="blog">
+        <h1>念去去</h1>
+        <p>十八岁的海涛是墨绿的十年后的夜，默默无言又几番无月。</p>
+        <p>在雾中走入曲折长街就为迎接那场雪？芬芳的枯萎在影子里堆积，勾着皮肉，那些暗示、祈求、泪滴和谅解是刻在墓碑上的不顾一切。</p>
+        <p>想一下就会脸红的的事，饮一杯酒与蜜无人不尝的苦水，一口绝决。</p>
+        <p>怀中余香温暖，是亲手慢慢写好的无眠，叠成同心方胜儿，就勾了魂。以爱的命运互相桶着刀子，在水中侵泡过的泪痕划破心的薄膜，结痂总是隆起，痛了就不愿再剥开。</p>
+        <p>想一些无法说服自己的道理啊，孔老头在歪脖子的树下系着破烂的弃船。从没有放弃愚蠢，总忘记不快，在唾弃和歌声里流传。</p>
+        <p>如果如果如果，就是罪恶的源泉。就像海来自于海。</p>
+        <p>不过一路走得各有自以为是的苦闷精彩。</p>
+    </div><div class="list" id="Tree">
+    <h3>Blog Archive</h3>
+    <ul class="timeline"></ul>
+</div>
+</div>
+<footer class="right">&copy; 2014 Ian Li. All Rights Reserved</footer>
+<script>
+    (function() {
+        'use strict';
+        requirejs.config({
+            "baseUrl" : "../js",
+            "paths" : {
+                "jquery" : "../aio/aio-lib",
+                "fp" : "./fp",
+                "life" : "./life",
+                "aio" : "../aio",
+                "chart" : "../lib/chart",
+                "tree" : "../lib/tree"
+            }
+        });
+
+        if (!/\b(localhost)\b/g.test(location.href)) {
+            requirejs(["aio/aio"], function () {
+                requirejs(["life/app"]);
+            });
+        } else {
+            requirejs(["life/app"]);
+        }
+    })();
+</script>
+</body>
+</html>
