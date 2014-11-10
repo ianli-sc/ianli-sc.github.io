@@ -75,11 +75,73 @@
                 padding-top: 15px;
                 line-height: 2;
             }
+            table {
+                width: 100%;
+                word-break: break-all;
+            }
         }
         .icon {
             padding-left: 10px;
             font-size: 10px;
             color: #999;
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .tec-blog {
+        .content {
+            width: auto;
+        }
+        .blog {
+            padding: 0 4em;
+            display: block;
+            width: auto;
+            article {
+                padding: 0;
+            }
+        }
+        .list {
+            display: block;
+            top: 0;
+            right: 0;
+        }
+    }
+}
+
+@media only screen and (max-width: 680px) {
+    .tec-blog {
+        .nav {
+            margin-bottom: 2em;
+        }
+        .content {
+            width: auto;
+        }
+        .blog {
+            padding: 0 1em;
+            display: block;
+            width: auto;
+            article {
+                padding: 0;
+            }
+            .post-meta {
+                font-size: 12px;
+            }
+            .post-content {
+                font-size: 14px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            code {
+                word-break: break-all;
+                white-space: normal;
+            }
+        }
+        .list {
+            display: none;
+            top: 0;
+            right: 0;
         }
     }
 }
