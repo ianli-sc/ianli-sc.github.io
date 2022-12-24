@@ -1,11 +1,23 @@
 import { defineConfig } from "umi";
-import px2rem from "postcss-plugin-px2rem";
+import px2vp from "postcss-px-to-viewport";
 
 export default defineConfig({
   npmClient: 'pnpm',
   extraPostCSSPlugins: [
-    px2rem({
-      rootValue: 18.75,
+    px2vp({
+      unitToConvert: 'px',
+      viewportWidth: 375,
+      unitPrecision: 5,
+      propList: ['*'],
+      viewportUnit: 'vw',
+      fontViewportUnit: 'vw',
+      selectorBlackList: [],
+      minPixelValue: 1,
+      mediaQuery: false,
+      replace: true,
+      exclude: undefined,
+      include: undefined,
+      landscape: false,
     })
   ]
 });

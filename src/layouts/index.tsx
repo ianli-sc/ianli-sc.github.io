@@ -1,20 +1,11 @@
-import { Link, Outlet } from 'umi';
+import { Outlet } from 'umi';
+import ADS from '../components/ads'
 import styles from './index.less';
 
 export default function Layout() {
   return (
-    <div className={styles.navs}>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/docs">Docs</Link>
-        </li>
-        <li>
-          <a href="https://github.com/umijs/umi">Github</a>
-        </li>
-      </ul>
+    <div className={styles.home}>
+      <ADS />
       <Outlet />
     </div>
   );
