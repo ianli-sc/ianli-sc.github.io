@@ -1,5 +1,6 @@
 import styles from "./index.less";
-import { useEffect, useState } from "react";
+import ellipse from "../../assets/ellipse.png";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 interface ListProps {
   text: string;
@@ -8,34 +9,68 @@ interface Product {
   brand: string;
   productName: string;
 }
-const doSearch = (text: string, callback: (e: any) => any) => {
+type func = (e: any) => any;
+const doSearch = (text: string, setList: func, setMore: func) => {
   fetch(`/api/getProduct?text=${text}`, {
-    method: "get", // or 'PUT'
+    method: "get",
     headers: {
       "Content-Type": "application/json",
     },
   })
     .then((response) => response.json())
     .then((data) => {
-      callback(data.list);
+      setList(data.list);
+      setMore(data.more);
     })
     .catch((error) => {
-      callback(null);
+      setList(null);
+      setMore(false);
     });
 };
+
 export default function List({ text }: ListProps) {
-  const [list, setList] = useState(null);
+  const [list, setList] = useState([]);
+  const [more, setMore] = useState(false);
+  const loadingEl = useRef(null);
+  const loadMore = useCallback(() => {
+    doSearch(
+      text,
+      (nextList) => {
+        if (Array.isArray(nextList)) {
+          setList(prev=>prev.concat(nextList));
+        }
+      },
+      setMore
+    );
+  }, [list])
   useEffect(() => {
-    if(text !== '') {
-        doSearch(text, setList);
+    if (text !== "") {
+      doSearch(text, setList, setMore);
+      const options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 1.0,
+      };
+      let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting || entry.isVisible) {
+            loadMore();
+          }
+        });
+      }, options);
+      setTimeout(() => {
+        loadingEl.current && observer.observe(loadingEl.current);
+      }, 100);
     } else {
-        setList(null);
+      setList([]);
     }
   }, [text]);
   return (
     <div className={styles.list}>
-      {list
-        ? list.map((item: Product, index: number) => {
+      {list && Array.isArray(list) && list.length > 0 ? (
+        <div className={styles.container}>
+          <div className={styles.title}>Products</div>
+          {list.map((item: Product, index: number) => {
             return (
               <div
                 className={styles.line}
@@ -44,8 +79,14 @@ export default function List({ text }: ListProps) {
                 {item.brand}&nbsp;{item.productName}
               </div>
             );
-          })
-        : null}
+          })}
+          {more ? (
+            <div className={styles.loading} ref={loadingEl}>
+              <img src={ellipse} className={styles.icon} />
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }

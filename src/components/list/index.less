@@ -1,5 +1,4 @@
 .list {
-    margin-top: 4px;
     padding: 0 16px;
     font-size: 14px;
     line-height: 16px;
@@ -10,3 +9,27 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+.container {
+    margin-top: 4px;
+}
+.title {
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: #757575;
+}
+.loading {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    animation: round 2s infinite;
+}
+@keyframes round {
+    from {rotate: 0}
+    to {rotate: 360deg}
+  }
