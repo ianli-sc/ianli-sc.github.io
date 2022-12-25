@@ -1,5 +1,6 @@
 import styles from "./index.less";
-import ellipse from "../../assets/ellipse.png";
+import { Link } from "umi";
+import Loading from '@/components/loading';
 import { useEffect, useState, useRef, useCallback } from "react";
 
 interface ListProps {
@@ -8,6 +9,7 @@ interface ListProps {
 interface Product {
   brand: string;
   productName: string;
+  id: string;
 }
 type func = (e: any) => any;
 const doSearch = (text: string, setList: func, setMore: func) => {
@@ -72,18 +74,16 @@ export default function List({ text }: ListProps) {
           <div className={styles.title}>Products</div>
           {list.map((item: Product, index: number) => {
             return (
-              <div
+              <Link to={`/Detail?id=${item.id}`}
                 className={styles.line}
                 key={`${item.brand}${item.productName}${index}`}
               >
                 {item.brand}&nbsp;{item.productName}
-              </div>
+              </Link>
             );
           })}
           {more ? (
-            <div className={styles.loading} ref={loadingEl}>
-              <img src={ellipse} className={styles.icon} />
-            </div>
+            <Loading ref={loadingEl} />
           ) : null}
         </div>
       ) : null}
