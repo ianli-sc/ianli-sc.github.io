@@ -47,6 +47,7 @@ export default function Search({ placeHolder, onCancelClick, onSearch }: props) 
       <label className={styles.search}>
         <img src={inputActive ? search : searchGray} className={styles.img} />
         <input
+          value={value}
           onFocus={changeActive(true)}
           onBlur={changeActive(false)}
           onInput={(e) => {
@@ -60,7 +61,11 @@ export default function Search({ placeHolder, onCancelClick, onSearch }: props) 
         />
       </label>
       {inputActive ? (
-        <div className={styles.btn} onClick={onCancelClick}>
+        <div className={styles.btn} onClick={()=> {
+          setValue('');
+          setInputActive(false);
+          onCancelClick();
+        }}>
           Cancel
         </div>
       ) : null}
