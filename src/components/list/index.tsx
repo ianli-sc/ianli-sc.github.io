@@ -12,7 +12,7 @@ interface Product {
   id: string;
 }
 type func = (e: any) => any;
-const doSearch = (text: string, setList: func, setMore: func) => {
+const doSearch = (text: string, setList: func, setMore: func, callback?: func) => {
   fetch(`/api/getProduct?text=${text}`, {
     method: "get",
     headers: {
@@ -23,6 +23,7 @@ const doSearch = (text: string, setList: func, setMore: func) => {
     .then((data) => {
       setList(data.list);
       setMore(data.more);
+      callback && callback(1);
     })
     .catch((error) => {
       setList(null);
@@ -47,7 +48,11 @@ export default function List({ text }: ListProps) {
   }, [list])
   useEffect(() => {
     if (text !== "") {
-      doSearch(text, setList, setMore);
+      doSearch(text, setList, setMore, ()=>{
+        setTimeout(()=> {
+          loadingEl.current && observer.observe(loadingEl.current)
+        }, 100)
+      });
       const options = {
         root: null,
         rootMargin: "0px",
@@ -60,9 +65,6 @@ export default function List({ text }: ListProps) {
           }
         });
       }, options);
-      setTimeout(() => {
-        loadingEl.current && observer.observe(loadingEl.current);
-      }, 100);
     } else {
       setList([]);
     }
