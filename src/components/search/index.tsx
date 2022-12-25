@@ -35,9 +35,10 @@ function debounce(func:(e:any)=>void, wait: number, immediate: boolean) {
 
 export default function Search({ placeHolder, onCancelClick, onSearch }: props) {
   const [inputActive, setInputActive] = useState(false);
+  const [value, setValue] = useState('');
   const changeActive = (active: boolean) => {
     return () => {
-      setInputActive(active);
+      setInputActive(value !== '' || active);
     };
   };
   const debounceSearch = debounce(onSearch, 500, false);
@@ -48,15 +49,21 @@ export default function Search({ placeHolder, onCancelClick, onSearch }: props) 
         <input
           onFocus={changeActive(true)}
           onBlur={changeActive(false)}
-          onInput={(e)=> {
-            debounceSearch(e)
+          onInput={(e) => {
+            const text = e?.target?.value.trim();
+            setValue(text);
+            debounceSearch(text);
           }}
           className={styles.input}
           type="search"
           placeholder={placeHolder}
         />
       </label>
-      {inputActive ? <div className={styles.btn} onClick={onCancelClick}>Cancel</div> : null}
+      {inputActive ? (
+        <div className={styles.btn} onClick={onCancelClick}>
+          Cancel
+        </div>
+      ) : null}
     </div>
   );
 }

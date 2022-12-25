@@ -9,13 +9,13 @@
     "start": "npm run dev"
   },
   "dependencies": {
-    "antd-mobile": "^5.27.0",
     "umi": "^4.0.40"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "postcss-px-to-viewport": "^1.1.1",
     "typescript": "^4.1.2",
-    "postcss-px-to-viewport": "^1.1.1"
+    "mockjs": "^1.1.0"
   }
 }
