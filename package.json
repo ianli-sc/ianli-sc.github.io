@@ -6,7 +6,9 @@
     "build": "umi build",
     "postinstall": "umi setup",
     "setup": "umi setup",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "genTest": "umi g jest",
+    "test": "TS_NODE_TRANSPILE_ONLY=yes jest --passWithNoTests"
   },
   "dependencies": {
     "swiper": "^8.4.5",
@@ -17,6 +19,12 @@
     "@types/react-dom": "^18.0.0",
     "mockjs": "^1.1.0",
     "postcss-px-to-viewport": "^1.1.1",
-    "typescript": "^4.1.2"
+    "typescript": "^4",
+    "jest": "^27",
+    "@types/jest": "^27",
+    "ts-node": "^10",
+    "@testing-library/react": "^13",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@types/testing-library__jest-dom": "^5.14.5"
   }
 }
