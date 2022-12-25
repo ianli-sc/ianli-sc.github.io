@@ -11,6 +11,9 @@
 
 > npm run dev
 
-## 其他可能的问题
+## 其他解释
 
 1. 数据加载很快，如何看到搜索的列表的底部的loading的按钮：在chrome的develop tools的network conditions内的networ throttling设为 Slow 3G。
+2. 使用了哪些依赖：
+    1. swiper组件写起来太耗时，使用了swiper/react
+    1. 整体spa方案使用了umi，这是一个非常高效的轻量的react研发框架，阿里的业务基本都使用这个。

@@ -9,7 +9,7 @@
     "start": "npm run dev"
   },
   "dependencies": {
-    "antd-mobile": "^5.27.0",
+    "swiper": "^8.4.5",
     "umi": "^4.0.40"
   },
   "devDependencies": {
