@@ -1,5 +1,5 @@
 import { Outlet } from 'umi';
-import ADS from '../components/ads'
+import ADS from '@/components/ads'
 import styles from './index.less';
 
 export default function Layout() {
