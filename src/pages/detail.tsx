@@ -3,6 +3,7 @@ import SearchBar from "@/components/searchBar";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
+import { useSearchParams } from "umi";
 
 import styles from "./detail.less";
 import "swiper/less";
@@ -12,11 +13,12 @@ interface DetailProps {
   id: string;
 }
 
-export default function Detail({ id }: DetailProps) {
+export default function Detail() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [searchParams] = useSearchParams();
   useEffect(() => {
-    fetch(`/api/getDetail?id=${id}`, {
+    fetch(`/api/getDetail/${searchParams.get('id')}`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
