@@ -11,6 +11,14 @@
 
 > npm run dev
 
+## 单侧
+
+因为没写什么复杂函数，就只添加了一些ui的单侧
+
+运行
+
+> npx jest
+
 ## 其他解释
 
 1. 数据加载很快，如何看到搜索的列表的底部的loading的按钮：在chrome的develop tools的network conditions内的networ throttling设为 Slow 3G。

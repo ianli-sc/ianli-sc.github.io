@@ -1,5 +1,5 @@
 import { defineConfig } from "umi";
-import px2vp from "postcss-px-to-viewport";
+// import px2vp from "postcss-px-to-viewport";
 
 export default defineConfig({
   npmClient: 'pnpm',

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders layouts by snapshot 1`] = `
+<div>
+  <div
+    class="home"
+  >
+    <div
+      class="ads"
+    >
+      <div
+        class="text-inline"
+      >
+        BLACK FRIDAY SALE | Up to 50% off FW22 with an extra 10% off using code ‘BLACK10’ at checkout. 
+        <span
+          class="link"
+        >
+          T&Cs apply
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
