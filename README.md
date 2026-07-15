@@ -1,30 +1,19 @@
-# 简介
+# ianli-sc.github.io
 
-## 安装
+李彪（IANLI）的双语个人主页。
 
-> 本压缩文件已经将node_modules都打包了，理论上无需额外安装，如无法运行按如下流程安装
+这是一个无需构建步骤的静态站点，直接由 GitHub Pages 托管：
 
-1. 依赖：node > 16
-1. 安装依赖：npm install
+- `index.html`：页面结构与内容
+- `styles.css`：水墨视觉与响应式布局
+- `script.js`：中英切换、滚动显现与轻量视差
+- 根目录图片：原主页水墨背景素材
+- `assets/`：印章与本地字体
 
-## 启动
+本地预览：
 
-> npm run dev
+```bash
+python3 -m http.server 4173
+```
 
-## 单侧
-
-因为没写什么复杂函数，就只添加了2个简答ui的单测作为示例，使用`@testing-library/react`和`@testing-library/jest-dom`，分布检测dom的存在性。
-
-见components/ads目录下的index.text.tsx和layouts目录下的index.test.tsx
-
-运行单测
-
-> npx jest
-
-## 其他的一些备注
-
-1. 数据加载很快，如何看到搜索的列表的底部的loading的按钮：在chrome的develop tools的network conditions内的networ throttling设为 Slow 3G。
-2. 使用了哪些依赖：
-    1. swiper组件写起来太耗时，使用了swiper/react
-    1. 整体spa方案使用了umi，这是一个非常高效的轻量的react研发框架，阿里的业务基本都使用这个。
-3. 阳了体力不行，本打算基于postcss-px-to-viewport做下多屏适配，实在是扛不住。
+然后访问 <http://localhost:4173/>。
