@@ -33,11 +33,11 @@ const english = {
   "experience.kuaishou.tag3": "+75% MONTHLY REQUIREMENT THROUGHPUT",
   "experience.kuaishou.tag4": "-50% DELIVERY TIME PER REQUIREMENT",
   "experience.alibaba.title": "Senior Frontend Technical Expert",
-  "experience.alibaba.company": "ALIBABA · SUPPLY CHAIN PLATFORM",
-  "experience.alibaba.body": "Led frontend teams across Tmall reverse transactions, collaborative supply chain, new-retail terminals, planning and data decision products. Managed a 13-person team building goal management, operating plans and S&OP products, and drove supply-chain transformation toward SaaS and PaaS through data visualization, processing, connectivity and permission systems.",
-  "experience.alibaba.tag1": "13-PERSON CORE FRONTEND TEAM",
-  "experience.alibaba.tag2": "50+ SHOPS / 100+ STORES",
-  "experience.alibaba.tag3": "500+ UNMANNED RETAIL LOCATIONS",
+  "experience.alibaba.company": "ALIBABA · TMALL TRANSACTIONS / SUPPLY CHAIN",
+  "experience.alibaba.body": "Across nine years at Alibaba, I spent the first five on Tmall transaction systems, focused on reverse transactions and other core commerce flows. I then spent four years in supply chain, leading frontend teams for collaborative supply chain, new-retail terminals, planning and data decision products. I managed a 13-person team building goal management, operating plans and S&OP products, and drove the supply-chain platform toward SaaS and PaaS.",
+  "experience.alibaba.tag1": "5 YEARS · TMALL TRANSACTIONS",
+  "experience.alibaba.tag2": "4 YEARS · SUPPLY CHAIN",
+  "experience.alibaba.tag3": "13-PERSON CORE FRONTEND TEAM",
   "experience.alibaba.tag4": "1 SOLUTION PATENT",
   "work.eyebrow": "SELECTED PRACTICE · IMPACT",
   "work.title": "Four Chapters of Work",
@@ -134,7 +134,17 @@ try {
 setLanguage(initialLanguage, false);
 
 const revealElements = [...document.querySelectorAll("[data-reveal]")];
+const motionSections = [...document.querySelectorAll(".section")];
+const progressSection = document.querySelector("[data-scroll-section]");
 document.documentElement.classList.add("motion-ready");
+
+function revealElementsInViewport() {
+  revealElements.forEach((element) => {
+    if (element.classList.contains("is-visible")) return;
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.94 && rect.bottom > 0) element.classList.add("is-visible");
+  });
+}
 
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
@@ -149,22 +159,63 @@ if ("IntersectionObserver" in window) {
     { rootMargin: "0px 0px -12%", threshold: 0.08 },
   );
   revealElements.forEach((element) => observer.observe(element));
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "0px 0px -8%", threshold: 0.08 },
+  );
+  motionSections.forEach((section) => sectionObserver.observe(section));
 } else {
   revealElements.forEach((element) => element.classList.add("is-visible"));
+  motionSections.forEach((section) => section.classList.add("in-view"));
 }
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-let parallaxFrame = 0;
+let motionFrame = 0;
 
-function updateParallax() {
-  parallaxFrame = 0;
-  const offset = reducedMotion.matches ? 0 : Math.max(-48, window.scrollY * -0.035);
-  document.documentElement.style.setProperty("--hero-parallax", `${offset}px`);
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
 }
 
-function requestParallax() {
-  if (!parallaxFrame) parallaxFrame = requestAnimationFrame(updateParallax);
+function updateScrollMotion() {
+  motionFrame = 0;
+  revealElementsInViewport();
+  const root = document.documentElement;
+  const scrollRange = Math.max(1, root.scrollHeight - window.innerHeight);
+  const scrollProgress = clamp(window.scrollY / scrollRange, 0, 1);
+  const heroOffset = reducedMotion.matches ? 0 : Math.max(-48, window.scrollY * -0.035);
+
+  root.style.setProperty("--hero-parallax", `${heroOffset}px`);
+  root.style.setProperty("--scroll-progress", String(scrollProgress));
+
+  let activeSection = 0;
+  motionSections.forEach((section, index) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= window.innerHeight * 0.55) activeSection = index + 1;
+
+    const sectionCenter = rect.top + rect.height / 2;
+    const distanceFromCenter = window.innerHeight / 2 - sectionCenter;
+    const washOffset = reducedMotion.matches ? 0 : clamp(distanceFromCenter * 0.035, -34, 34);
+    section.style.setProperty("--wash-y", `${washOffset}px`);
+  });
+
+  if (progressSection) progressSection.textContent = String(activeSection).padStart(2, "0");
 }
 
-window.addEventListener("scroll", requestParallax, { passive: true });
-updateParallax();
+function requestScrollMotion() {
+  if (!motionFrame) motionFrame = requestAnimationFrame(updateScrollMotion);
+}
+
+window.addEventListener("scroll", requestScrollMotion, { passive: true });
+window.addEventListener("resize", requestScrollMotion, { passive: true });
+window.addEventListener("load", revealElementsInViewport, { once: true });
+window.addEventListener("hashchange", () => requestAnimationFrame(revealElementsInViewport));
+requestAnimationFrame(revealElementsInViewport);
+updateScrollMotion();
